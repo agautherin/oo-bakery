@@ -1,9 +1,8 @@
-class Desserts
-    attr_reader :name, :bakery
+class Dessert
+    attr_reader :name
     @@all = []
-    def initialize(name, bakery)
+    def initialize(name)
         @name = name
-        @bakery = bakery
         @@all << self
     end
 
@@ -13,12 +12,21 @@ class Desserts
     end
 
     def ingredients
-        ing = Ingredients.all.select do |ingredient|
-            ingredient.dessert == self
+        ing = DessertIngredient.all.select do |di|
+            di.dessert == self
         end
-        ing.map {|ingre| ingre.name}
 
-    #should return an array of ingredients for the dessert
+        # # cookie.ingredients
+        # my_dessert_ingredients = []
+        # # self? (cookie)
+        # DessertIngredient.all.each do |row|
+        #     if row.dessert == cookie:
+        #         my_dessert_ingredients << row
+        #     end
+        # end
+
+
+        ing.map {|di| di.ingredient}
     end
 
     def bakery

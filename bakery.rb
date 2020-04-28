@@ -12,8 +12,8 @@ class Bakery
         @@all
     end
 
-    def Desserts
-        dessert = Desserts.all.map do |des|
+    def desserts
+        dessert = Dessert.all.map do |des|
             des.bakery == self
         end
         dessert.map do |des|
